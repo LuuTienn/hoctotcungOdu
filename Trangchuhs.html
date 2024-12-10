@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <title>Học tốt cùng Odu</title>
+        <meta name="Keywords" content="học tốt, kì thi, tuyển sinh, Odu, bài giảng, đề thi, bài kểm tra" />
+        <meta name="Description" content="Nền Tảng Ôn Luyện Tốt Nghiệp Trung Học Phổ Thông" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="Luu Tienn" >
+        <meta name='revisit-after' content='1 days' />      
+        <link rel="stylesheet" href="nav.css">
+        <script type="module" src="./login.js" defer></script>
+        <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    </head>
+    <body>
+        <header>
+          <div class="header">
+            <a href="#"><img src="./image/Odu.png" alt="Logo" width="300" height="100"></a>
+            <div class="login">
+              <div id="hocsinh" style="text-align: center; margin: 20px 0; font-size: 18px;">
+                <span id="greeting" style="font-weight: bold; color: #04AA6D;"></span>
+            </div>
+            <button id="logoutButton" class="logoutbtn" style="display:none;">Đăng xuất</button>
+            </div>
+        </div>
+            <!-- Menu -->
+            <div class="navbar">
+              <a href="./Trangchuhs.html" class="nav-item">Trang chủ</a>
+              <a href="./Lythuyeths.html"  class="nav-item">Kiến thức ôn thi THPT</a>
+              <a href="./videobaigianghs.html"  class="nav-item">Video bài giảng</a>
+              <a href="./Luyentaphs.html" class="nav-item">Luyện tập</a>
+              <a href="./danhsachhocsinh.html"  class="nav-item">Đề thi</a>
+            </div>
+            <script>
+              document.addEventListener("DOMContentLoaded", () => {
+            const navItems = document.querySelectorAll(".nav-item");
+
+            navItems.forEach((item) => {
+              // Kiểm tra URL hiện tại có khớp link của nav item không
+              if (item.href === window.location.href) {
+                item.classList.add("active");
+              }
+            });
+          });
+            </script>
+
+        </header>
+
+    <!--SlideShow-->
+<script>
+
+var modal = document.getElementById('id01');
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+    </ul>
+    </nav>
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 3</div>
+  <img src="./image/Frog.jpeg" style="width:100%">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="./image/Frog1.png" style="width:100%">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="./image/Frog2.jpeg" style="width:100%">
+</div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 2000); 
+}
+
+function myFunction(imgs) {
+  var expandImg = document.getElementById("expandedImg");
+  var imgText = document.getElementById("imgtext");
+  expandImg.src = imgs.src;
+  imgText.innerHTML = imgs.alt;
+  expandImg.parentElement.style.display = "block";
+}
+</script>
+
+<article>
+  <div class="text-center">
+      <h3>TIPS ÔN THI HIỆU QUẢ</h3>
+
+      <div class="tip">
+          <img src="./image/frog1.jpg" alt="" width="200px" class="float-left">
+          <div class="tip-content">
+              <strong>Có mục tiêu và kế hoạch cụ thể</strong>
+              <p>
+                  Theo quy luật 80/20, cứ 20 phút bạn bỏ ra để lập kế hoạch thì bạn sẽ tiết kiệm được 80% thời gian hoàn thành và hiệu quả công việc.
+                  Từ bây giờ bạn hãy lấy một tờ giấy và xác định lại mục tiêu ôn thi đại học của mình:
+                  <br>+ Bạn định thi đỗ trường nào?
+                  <br>+ Số điểm dự kiến là bao nhiêu?                
+                  <br>Sau đó, bạn hãy lên list các công việc để có thể từng bước đạt được mục tiêu.
+              </p>
+          </div>
+      </div>
+
+      <div class="tip">
+          <div class="tip-content">
+              <strong>Rèn luyện thói quen tự học</strong>
+              <p>
+                  Có thể nói, ai đã từng trải qua đợt thi sẽ hiểu cảm giác của khoảng thời gian chạy xô tới những lớp luyện thi cấp tốc.
+                  Học trên trường, về nhà lại đi luyện thi ở hai, ba lớp học thêm khiến bạn cảm thấy mệt mỏi.
+                  Tối về, để cặp sách đó, ăn, tắm rửa rồi lăn ra ngủ để lấy sức khỏe cho một ngày dài tiếp theo.
+              </p>
+          </div>
+          <img src="./image/frog2.png" alt="" width="200px" class="float-right">
+      </div>
+
+      <div class="tip">
+          <img src="./image/frog3.png" alt="" width="200px" class="float-left">
+          <div class="tip-content">
+              <strong>Luyện kỹ thuật ghi nhớ</strong>
+              <p>
+                  Sự đa dạng của kiến thức là thách thức lớn đối với học sinh đang trong giai đoạn ôn luyện.
+                  Lúc này, các phương pháp ghi nhớ ngắn hạn như sơ đồ, video,... là cách để bạn hệ thống kiến thức nhanh nhất.
+              </p>
+          </div>
+      </div>
+
+      <div class="tip">
+          <div class="tip-content">
+              <strong>Viết suy nghĩ ra giấy</strong>
+              <p>
+                  Đừng học thuộc bằng cách đọc lẩm bẩm! Thay vào đó, bạn nên chuẩn bị một tờ giấy và viết tất cả những gì mình suy nghĩ.
+                  Các nhà khoa học cho biết, viết sẽ kích thích não ghi nhớ. Đây cũng là một cách tiếp thu kiến thức trực quan.
+              </p>
+          </div>
+          <img src="./image/frog4.png" alt="" width="200px" class="float-right">
+      </div>
+  </div>
+</article>
+
+<!--LỊCH-->
+<div class="text-center">
+<h3 style="text-align: center;">LỊCH</h3>
+</div>
+<div id="calendar"></div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth', // Hiển thị dạng tháng
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+        });
+        calendar.render();
+    });
+</script>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>Thông tin chủ sở hữu</h3>
+      <p>Chủ sở hữu: Luu Tienn</p>
+      <p>Điện thoại: 0789 357 421</p>
+      <p>Email: luutien0987@gmail.com</p>
+    </div>
+
+    <div class="footer-column">
+      <h3>Theo dõi tôi</h3>
+      <a href="https://www.facebook.com/hennieisme">Facebook</a> |
+      <a href="https://www.instagram.com/tienn_luu">Instagram</a> |
+      <a href="https://x.com/HyeCeline291">Twitter</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Bản quyền thuộc về chủ sở hữu.</p>
+  </div>
+</footer>
+
+
+
+<script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.0.0-beta.4/libs/oversea/index.js"></script>
+<script>
+    new CozeWebSDK.WebChatClient({
+      config: {
+        bot_id: '7444572033314979848',
+      },
+      componentProps: {
+        title: 'Coze',
+      },
+    });
+</script>
+
+
+  </body>
+</html>

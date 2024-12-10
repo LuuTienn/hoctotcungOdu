@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học tốt cùng Odu</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+                * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Times New Roman', Times, serif; /* Phông chữ mặc định */
+        }
+        body {
+            font-family: Verdana, sans-serif;
+            background-color: #f3ffec;
+        }
+
+        .header {
+            display: flex; /* Sử dụng flexbox */
+            justify-content: space-between; /* Căn giữa các phần tử */
+            align-items: center; /* Căn chỉnh theo chiều dọc */
+            height: 120px; /* Chiều cao header */
+            padding: 0 20px; /* Padding bên trái và bên phải */
+            background: #c7d9a0; /* Màu nền header */
+        }
+
+        .login {
+            margin-left: 20px; /* Khoảng cách bên trái cho phần đăng nhập */
+        }
+
+        .login a {
+            font-size: 18px; /* Kích thước font cho link */
+            color: #333; /* Màu chữ */
+            text-decoration: none; /* Bỏ gạch chân */
+        }
+
+        .login a:hover {
+            text-decoration: underline; /* Gạch chân khi hover */
+        }
+
+        .container {
+            max-width: 1555px; /* Chiều rộng tối đa */
+            width: 100%; /* Chiếm toàn bộ chiều rộng */
+            margin: 0 auto; /* Căn giữa khung chứa */
+        }
+
+        header img { /* Sửa lại selector cho hình ảnh trong header */
+            padding-left: 0; /* Padding bên trái cho hình ảnh */
+        }
+
+        .text-center {
+            text-align: center; /* Căn giữa văn bản */
+            margin: 20px auto; /* Khoảng cách bên ngoài */
+            max-width: 800px; /* Giới hạn chiều rộng */
+        }
+
+        .tip {
+            display: flex; /* Sử dụng flexbox để căn chỉnh */
+            align-items: flex-start; /* Căn chỉnh phần tử theo chiều dọc */
+            margin: 10px 0; /* Khoảng cách giữa các tip */
+            justify-content: center; /* Căn giữa nội dung */
+        }
+
+        .float-left {
+            margin-right: 15px; /* Khoảng cách giữa ảnh và văn bản bên phải */
+        }
+
+        .float-right {
+            margin-left: 15px; /* Khoảng cách giữa ảnh và văn bản bên trái */
+        }
+
+        .tip-content {
+            max-width: 70%; /* Giới hạn chiều rộng của nội dung văn bản */
+            text-align: left; /* Đặt văn bản căn trái */
+        }
+        /* Menu */
+        .navbar {
+            display: flex; /* Sử dụng flexbox cho menu */
+            background-color: #73bc63; /* Màu nền menu */
+            width: 100%; /* Chiếm toàn bộ chiều rộng */
+        }
+
+        .navbar a {
+            flex: 1; /* Mỗi mục menu sẽ chiếm đều không gian */
+            font-size: 18px; /* Kích thước font cho mục menu */
+            color: white; /* Màu chữ cho mục menu */
+            text-align: center; /* Căn giữa cho mục menu */
+            padding: 14px; /* Padding cho các mục menu */
+            text-decoration: none; /* Bỏ gạch chân cho link */
+        }
+        .navbar a:hover{
+            background-color: rgb(86, 160, 46); /* Hiệu ứng hover */
+        }
+        #userInfo {
+        text-align: center;
+        margin: 20px 0;
+        font-size: 18px;
+        }
+        #hocsinh {
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+        #phoneDisplay {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .logoutbtn {
+            background-color: #64cd60;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px; 
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .logoutbtn:hover {
+            background-color: #268a30; 
+        }
+        #question-section {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            padding-left: 20px; /* Cách lề trái một chút */
+        }
+
+        #question-form label, #question-form input {
+            width: 100%;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        #question-form input[type="text"], 
+        #question-form input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+        }
+
+        #question-form button {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #0fbb2c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #question-form button:hover {
+            background-color: #00b303;
+        }
+        a {
+            text-decoration: none; /* Bỏ gạch chân */
+            color: #11ce07; /* Màu chữ cho liên kết */
+            transition: color 0.3s; /* Hiệu ứng chuyển màu */
+        }
+
+        a:hover {
+            color: #108902; /* Màu khi hover */
+        }
+    </style>
+        <script src="./login.js" defer></script> 
+</head>
+<body>
+    <header>
+        <div class="header">
+            <a href="#"><img src="./image/Odu.png" alt="" width="300" height="100"></a>
+            <div class="login">
+                <div id="hocsinh" style="text-align: center; margin: 20px 0; font-size: 18px;">
+                    <span id="phoneDisplay" style="font-weight: bold; color: #04AA6D;"></span>
+                </div>
+                <a href="./Login.html" id="loginLink">Đăng nhập</a>
+                <button id="logoutButton" style="display: none;" class="logoutbtn">Đăng xuất</button>
+            </div>
+        </div>
+        <div class="navbar">
+            <a href="./Odu.html">Trang chủ</a>
+            <a href="./Lythuyet.html">Kiến thức ôn thi THPT</a>
+            <a href="./DethiF12.html">Luyện tập</a>
+            <a href="./danhsachdethi.html">Tạo đề thi</a>
+          </div>
+    </header>
+    <main>
+        <section id="question-section">
+            <h2>Tạo câu hỏi</h2>
+            <form id="question-form">
+                <div id="questions-container"></div>
+                <div class="button-group">
+                <button type="button" onclick="addQuestion()">Thêm câu hỏi mới</button>
+                <button type="button" onclick="submitQuestions()">Lưu câu hỏi</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Test Creation Section -->
+        <section id="test-section" style="display: none;">
+            <h2>Tạo đề thi</h2>
+            <button type="button" onclick="createTest()">Tạo đề mới</button>
+            <div id="test-list">
+                <h3>Danh sách đề thi</h3>
+                <ul id="test-items"></ul>
+            </div>
+        </section>
+    </main>
+
+    <script src="./firebase.js" type="module"></script>
+    <script src="./teacher.js" type="module"></script>
+</body>
+</html>

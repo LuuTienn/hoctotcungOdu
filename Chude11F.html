@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học tốt cùng Odu</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+            background-color: #f3ffec;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 120px;
+            padding: 0 20px;
+            background: #c7d9a0;
+        }
+
+        .login {
+            margin-left: 20px;
+        }
+
+        .login a {
+            font-size: 18px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .login a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1555px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        header img {
+            padding-left: 0;
+        }
+
+        .text-center {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .tip {
+            display: flex;
+            align-items: flex-start;
+            margin: 10px 0;
+            justify-content: center;
+        }
+
+        .float-left {
+            margin-right: 15px;
+        }
+
+        .float-right {
+            margin-left: 15px;
+        }
+
+        .tip-content {
+            max-width: 70%;
+            text-align: left;
+        }
+
+        /* Menu */
+        .navbar {
+            display: flex;
+            background-color: #73bc63;
+            width: 100%;
+        }
+
+        .navbar a {
+            flex: 1;
+            font-size: 18px;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: rgb(86, 160, 46);
+        }
+        .nav-item {
+            color:  rgb(86, 160, 46);
+            font-weight: normal;
+            text-decoration: none;
+        }
+        
+        .nav-item.active {
+            color:  white; 
+            font-weight: bold;
+        }
+        .navbar a.active {
+        background-color: rgb(86, 160, 46);
+        color: white;
+        }
+
+        .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 32px;
+        font-weight: bold;
+        color: #4CAF50;
+        text-transform: uppercase;  /* Viết hoa toàn bộ */
+        letter-spacing: 2px;  /* Khoảng cách giữa các chữ */
+        position: relative;
+        }
+
+        /* Viền cho tiêu đề */
+        .section-title::before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #4CAF50;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .topic-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .topic-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .topic-content {
+            padding: 15px;
+        }
+
+        .topic-content h3 {
+            color: #4caf50;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .topic-content p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .content {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .page {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .page img {
+            width: 149mm;
+            height: 190mm;
+            object-fit: contain;
+            background-color: white;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .controls button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #73bc63;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .controls button:hover {
+            background-color: rgb(86, 160, 46);
+        }
+
+        @media print {
+            body {
+                background-color: white;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+
+            .controls {
+                display: none;
+            }
+        }
+.container {
+            display: flex;
+            gap: 20px;
+        }
+
+.sidebar {
+            width: 250px;
+            background-color: #ceecc3;
+            padding: 15px;
+            border-right: 2px solid #ddd;
+        }
+
+        .sidebar h3 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 25px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #2e7d32;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        #userInfo {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 18px;
+}
+#hocsinh {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+#phoneDisplay {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.logoutbtn {
+    background-color: #64cd60;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.logoutbtn:hover {
+    background-color: #268a30; 
+}
+a {
+    text-decoration: none; /* Bỏ gạch chân */
+    color: #11ce07; /* Màu chữ cho liên kết */
+    transition: color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+a:hover {
+    color: #108902; /* Màu khi hover */
+}
+    </style>
+    <script type="module" src="./login.js" defer></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header">
+          <a href="#"><img src="./image/Odu.png" alt="Logo" width="300" height="100"></a>
+          <div class="login">
+            <div id="hocsinh" style="text-align: center; margin: 20px 0; font-size: 18px;">
+              <span id="greeting" style="font-weight: bold; color: #04AA6D;">Vui lòng đăng nhập</span>
+            </div>
+            <a href="./Login.html" id="loginLink" style="display: none;">Đăng nhập</a>
+            <button id="logoutButton" class="logoutbtn" style="display: none;">Đăng xuất</button>
+          </div>
+        </div>
+          </div>
+        <div class="navbar">
+            <a href="./Trangchu.html" class="nav-item">Trang chủ</a>
+            <a href="./Lythuyet.html"  class="nav-item">Kiến thức ôn thi THPT</a>
+            <a href="./videobaigiang.html"  class="nav-item">Video bài giảng</a>
+            <a href="./Luyentap.html" class="nav-item">Luyện tập</a>
+            <a href="./danhsach.html"  class="nav-item">Đề thi</a>
+          </div>
+          <script>
+            document.addEventListener("DOMContentLoaded", () => {
+          const navItems = document.querySelectorAll(".nav-item");
+
+          navItems.forEach((item) => {
+            // Kiểm tra URL hiện tại có khớp link của nav item không
+            if (window.location.pathname.includes(new URL(item.href).pathname)) {
+            item.classList.add("active");
+            }
+          });
+        });
+          </script>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Lí thuyết Tin 12</h3>
+            <ul>
+                <li><a href="./Lythuyet.html">Chủ đề 12A.Máy tính và xã hội tri thức</a></li>
+                <li><a href="./ChudeB.html">Chủ đề 12B.Mạng máy tính và Internet</a></li>
+                <li><a href="./ChudeF.html">Chủ đề 12F.Tạo trang web</a></li>
+                <li><a href="./ChudeD.html">Chủ đề 12D.Giữ gìn tính nhân văn trong thế giới ảo</a></li>
+                <li><a href="./ChudeE.html">Chủ đề 12E.Giới thiệu nhóm nghề dịch vụ và quản trị</a></li>
+                <li><a href="./Chude12F.html">Chủ đề 12F<sup>CS</sup>.Giới thiệu học máy và khoa học dữ liệu</a></li>
+                <li><a href="./Chude11F.html">Chủ đề 11F<sup>CS</sup>.Kĩ thuật lập trình</a></li>
+                <li><a href="./Chude12E.html">Chủ đề 12E<sup>ICT</sup>.Thực hành phần mềm tạo trang web</a></li>
+                <li><a href="./Chude11E.html">Chủ đề 11E<sup>ICT</sup>.Thực hành tạo và khai thác cơ sở dữ liệu</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <div class="page">
+                <img id="documentImage" src="./img Kienthuc/74.jpg" alt="Trang 1">
+            </div>
+
+            <div class="controls">
+                <button onclick="prevPage()">Previous</button>
+                <span id="pageNum">Trang 1</span>
+                <button onclick="nextPage()">Next</button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const images = [
+                "./img Kienthuc/75.jpg",
+                "./img Kienthuc/76.jpg",
+                "./img Kienthuc/77.jpg", 
+                "./img Kienthuc/78.jpg", 
+                "./img Kienthuc/79.jpg",
+                "./img Kienthuc/80.jpg", 
+                "./img Kienthuc/81.jpg", 
+                "./img Kienthuc/82.jpg", 
+                "./img Kienthuc/83.jpg"
+                ];
+        let currentPage = 0;
+
+        function updatePage() {
+            document.getElementById("documentImage").src = images[currentPage];
+            document.getElementById("pageNum").textContent = `Trang ${currentPage + 1}`;
+        }
+
+        function prevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                updatePage();
+            }
+        }
+
+        function nextPage() {
+            if (currentPage < images.length - 1) {
+                currentPage++;
+                updatePage();
+            }
+        }
+    </script>
+</body>
+</html>

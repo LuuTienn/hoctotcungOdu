@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+        form {
+            border: 3px solid #f1f1f1;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #04AA6D;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+        }
+        img.avatar {
+            width: 10%;
+            border-radius: 50%;
+        }
+        .container {
+            padding: 16px;
+        }
+        #greeting {
+            font-size: 18px;
+            font-weight: bold;
+            color: #04AA6D;
+            margin-top: 20px;
+            text-align: center;
+        }
+        p {
+            text-align: center;
+        }
+        p a {
+            color: #04AA6D;
+            text-decoration: none;
+        }
+        p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Đăng Nhập</h2>
+
+<form id="loginForm">
+    <div class="imgcontainer">
+        <img src="./image/avatar.png" alt="Avatar" class="avatar">
+    </div>
+    <div class="container">
+        <label for="phone"><b>Số điện thoại</b></label>
+        <input type="text" id="phone" placeholder="Nhập số điện thoại" required>
+
+        <label for="password"><b>Mật khẩu</b></label>
+        <input type="password" id="password" placeholder="Nhập mật khẩu" required>
+
+        <button type="submit">Đăng Nhập</button>
+        <p>Chưa có tài khoản? <a href="./SignUp.html">Đăng ký</a></p>
+    </div>
+</form>
+
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyDbREPWwiC8EKsnd6yafF3hOHciZoT2X5Y",
+        authDomain: "khkt-e5f55.firebaseapp.com",
+        projectId: "khkt-e5f55",
+        storageBucket: "khkt-e5f55.appspot.com",
+        messagingSenderId: "362456283753",
+        appId: "1:362456283753:web:891b25d6ad8525e6d540f8",
+        measurementId: "G-7LMPVMPP4R"
+    };
+
+    // Khởi tạo Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    document.getElementById('loginForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const phone = document.getElementById('phone').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        try {
+            const usersRef = db.collection("users");
+            const snapshot = await usersRef.where("phone", "==", phone).get();
+
+            if (!snapshot.empty) {
+                const userData = snapshot.docs[0].data();
+                if (userData.password === password) {
+                    const role = userData.role;
+                    if (role === "teacher") {
+                        window.location.href = "./Trangchugv.html";
+                    } else {
+                        window.location.href = "./Trangchuhs.html";
+                    }
+                } else {
+                    alert("Mật khẩu không đúng.");
+                }
+            } else {
+                alert("Số điện thoại không tồn tại.");
+            }
+        } catch (error) {
+            console.error("Lỗi đăng nhập:", error);
+            alert("Đã xảy ra lỗi.");
+        }
+    });
+</script>
+
+
+
+
+</body>
+</html>

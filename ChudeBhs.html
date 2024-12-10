@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học tốt cùng Odu</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+            background-color: #f3ffec;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 120px;
+            padding: 0 20px;
+            background: #c7d9a0;
+        }
+
+        .login {
+            margin-left: 20px;
+        }
+
+        .login a {
+            font-size: 18px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .login a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1555px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        header img {
+            padding-left: 0;
+        }
+
+        .text-center {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .tip {
+            display: flex;
+            align-items: flex-start;
+            margin: 10px 0;
+            justify-content: center;
+        }
+
+        .float-left {
+            margin-right: 15px;
+        }
+
+        .float-right {
+            margin-left: 15px;
+        }
+
+        .tip-content {
+            max-width: 70%;
+            text-align: left;
+        }
+
+        /* Menu */
+        .navbar {
+            display: flex;
+            background-color: #73bc63;
+            width: 100%;
+        }
+
+        .navbar a {
+            flex: 1;
+            font-size: 18px;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: rgb(86, 160, 46);
+        }
+        .nav-item {
+            color:  rgb(86, 160, 46);
+            font-weight: normal;
+            text-decoration: none;
+        }
+        
+        .nav-item.active {
+            color:  white; 
+            font-weight: bold;
+        }
+        .navbar a.active {
+        background-color: rgb(86, 160, 46);
+        color: white;
+        }
+
+        #userInfo {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 18px;
+}
+#hocsinh {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+#phoneDisplay {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.logoutbtn {
+    background-color: #64cd60;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.logoutbtn:hover {
+    background-color: #268a30; 
+}
+a {
+    text-decoration: none; /* Bỏ gạch chân */
+    color: #11ce07; /* Màu chữ cho liên kết */
+    transition: color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+a:hover {
+    color: #108902; /* Màu khi hover */
+}
+
+        .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 32px;
+        font-weight: bold;
+        color: #4CAF50;
+        text-transform: uppercase;  /* Viết hoa toàn bộ */
+        letter-spacing: 2px;  /* Khoảng cách giữa các chữ */
+        position: relative;
+        }
+
+        /* Viền cho tiêu đề */
+        .section-title::before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #4CAF50;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .topic-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .topic-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .topic-content {
+            padding: 15px;
+        }
+
+        .topic-content h3 {
+            color: #4caf50;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .topic-content p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+    padding: 20px;
+}
+
+.footer-column {
+    flex: 1;
+    padding: 10px;
+}
+
+.footer-column h3 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.footer-column p, .footer-column a {
+    color: #ccc;
+    font-size: 14px;
+    text-decoration: none;
+    line-height: 1.8;
+}
+
+.footer-column a:hover {
+    color: #fff;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 10px;
+    border-top: 1px solid #444;
+    font-size: 13px;
+    color: #aaa;
+}
+.container {
+            display: flex;
+            gap: 20px;
+        }
+
+.sidebar {
+            width: 250px;
+            background-color: #ceecc3;
+            padding: 15px;
+            border-right: 2px solid #ddd;
+        }
+
+        .sidebar h3 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 25px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #2e7d32;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .content {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+.content-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            top: 50px;
+        }
+
+        .content-section h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .content-section p, ul, ol {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .content-section ul, .content-section ol {
+            margin-left: 20px;
+        }
+        .main-content {
+        display: flex;
+        flex-direction: column; /* Xếp chồng các phần tử theo chiều dọc */
+        gap: 20px; /* Khoảng cách giữa iframe và nội dung */
+        }
+                table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+    <script type="module" src="./login.js" defer></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header">
+          <a href="#"><img src="./image/Odu.png" alt="Logo" width="300" height="100"></a>
+          <div class="login">
+            <div id="hocsinh" style="text-align: center; margin: 20px 0; font-size: 18px;">
+              <span id="greeting" style="font-weight: bold; color: #04AA6D;"></span>
+          </div>
+          <button id="logoutButton" class="logoutbtn" style="display:none;">Đăng xuất</button>
+          </div>
+      </div>
+        <div class="navbar">
+            <a href="./Trangchuhs.html" class="nav-item">Trang chủ</a>
+            <a href="./Lythuyeths.html"  class="nav-item">Kiến thức ôn thi THPT</a>
+            <a href="./videobaigianghs.html"  class="nav-item">Video bài giảng</a>
+            <a href="./Luyentaphs.html" class="nav-item">Luyện tập</a>
+            <a href="./danhsachhocsinh.html"  class="nav-item">Đề thi</a>
+          </div>
+          <script>
+            document.addEventListener("DOMContentLoaded", () => {
+          const navItems = document.querySelectorAll(".nav-item");
+
+          navItems.forEach((item) => {
+            // Kiểm tra URL hiện tại có khớp link của nav item không
+            if (window.location.pathname.includes(new URL(item.href).pathname)) {
+            item.classList.add("active");
+            }
+          });
+        });
+          </script>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Lí thuyết Tin 12</h3>
+            <ul>
+                <li><a href="./Lythuyeths.html">Chủ đề 12A.Máy tính và xã hội tri thức</a></li>
+                <li><a href="./ChudeBhs.html">Chủ đề 12B.Mạng máy tính và Internet</a></li>
+                <li><a href="./ChudeFhs.html">Chủ đề 12F.Tạo trang web</a></li>
+                <li><a href="./ChudeDhs.html">Chủ đề 12D.Giữ gìn tính nhân văn trong thế giới ảo</a></li>
+                <li><a href="./ChudeEhs.html">Chủ đề 12E.Giới thiệu nhóm nghề dịch vụ và quản trị</a></li>
+                <li><a href="./Chude12Fhs.html">Chủ đề 12F<sup>CS</sup>.Giới thiệu học máy và khoa học dữ liệu</a></li>
+                <li><a href="./Chude11Fhs.html">Chủ đề 11F<sup>CS</sup>.Kĩ thuật lập trình</a></li>
+                <li><a href="./Chude12Ehs.html">Chủ đề 12E<sup>ICT</sup>.Thực hành phần mềm tạo trang web</a></li>
+                <li><a href="./Chude11Ehs.html">Chủ đề 11E<sup>ICT</sup>.Thực hành tạo và khai thác cơ sở dữ liệu</a></li>
+            </ul>
+        </aside>
+
+        <div class="main-content">
+        <div class="content-section">
+            <h3>Nội dung cốt lõi</h3>
+            <p>
+                <h4> 1. Thiết bị và giao thức mạng </h4>
+                1.1. Một số thiết bị mạng thông dụng 
+                Thiết bị mạng là các thiết bị có khả năng kết nối với nhau và cho phép kết nối các máy tính hoặc các thiết bị thông minh để tạo ra hệ thống mạng máy tính.
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Thiết bị</th>
+                            <th>Vai trò/Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Modem (Bộ điều giải)</td>
+                            <td>Biến đổi dữ liệu số từ các thiết bị kết nối mạng thành tín hiệu tương tự để truyền đi qua mạng (Điều chế) và ngược lại (Giải điều chế).</td>
+                        </tr>
+                        <tr>
+                            <td>Access point (Điểm truy cập không dây)</td>
+                            <td>
+                                - Tạo ra WLAN để kết nối các thiết bị không dây vào mạng LAN hoặc mạng không dây.<br>
+                                - Có thể thực hiện chức năng định tuyến trong mạng không dây, quản lí truy cập người dùng.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Switch (Bộ chuyển mạch)</td>
+                            <td>
+                                - Kết nối các thiết bị (kể cả máy tính) với nhau theo mô hình mạng hình sao và đóng vai trò trung tâm.<br>
+                                - Có khả năng mở rộng băng thông (số bit truyền trên giây) của đường truyền.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Server (Máy chủ)</td>
+                            <td>
+                                - Lưu trữ dữ liệu, cung cấp dịch vụ, chia sẻ tài nguyên, quản lí mạng.<br>
+                                - Đảm bảo độ tin cậy, hiệu suất và bảo mật hệ thống mạng.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Router (Bộ định tuyến)</td>
+                            <td>
+                                - Chuyển tiếp dữ liệu giữa các mạng khác nhau.<br>
+                                - Giúp kết nối mạng nội bộ với mạng Internet.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Cáp mạng</td>
+                            <td>Là phương tiện truyền tải dữ liệu giữa các thiết bị trong mạng có dây.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h4>1.2. Giao thức mạng và giao thức TCP/IP</h4>
+                Giao thức mạng (Network protocol) là tập hợp các quy tắc được thiết lập nhằm xác định cách để định dạng, truyền và nhận dữ liệu sao cho các máy tính, thiết bị mạng có thể giao tiếp với nhau, bất kể sự khác biệt về cơ sở hạ tầng, thiết kế hay các tiêu chuẩn cơ bản giữa chúng.<br>
+                Giao thức mạng hoạt động trên thiết bị gửi: đóng gói dữ liệu; xác định địa chỉ IP xác định địa chỉ MAC; xác định đường đi tối ưu; truyền gói dữ liệu; kiểm tra lỗi và đảm bảo độ tin cậy.<br>
+                Giao thức mạng hoạt động trên thiết bị nhận: tiếp nhận gói dữ liệu; kiểm tra địa chỉ l kiểm tra địa chỉ MAC; kiểm tra lỗi và đảm bảo độ tin cậy; giải nén dữ liệu.<br>
+                <h5>Một số giao thức mạng thông dụng:</h5>
+                - Truyền dữ liệu: HTTP, HTTPS.<br>
+                - Truyền tải tệp: FTP.<br>
+                - Truyền tải thư điện tử: MIME, SMTP, РОРЗ, ІМАР.<br>
+                - Truyền tải dữ liệu giữa các thiết bị không dây: WAP.<br>
+                Giao thức TCP/IP: (Transmission Control Protocol/Internet Protocol) là một bộ các giao thức trao đổi dữ liệu được sử dụng để truyền tải dữ liệu và kết nối các thiết bị trên mạng Internet.<br>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Giao thức TCP</th>
+                            <th>Giao thức IP</th>
+                            <th>Các giao thức TCP/IP phổ biến</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                - Quản lí việc thiết lập, duy trì và đóng kết nối giữa các thiết bị trên mạng.<br>
+                                - Đảm bảo truyền tải dữ liệu đáng tin cậy và theo đúng thứ tự từ nguồn đến đích.<br>
+                                - Xác định cách chia dữ liệu thành các gói.<br>
+                                - Kiểm tra tính toàn vẹn của dữ liệu.<br>
+                                - Quản lí việc truyền dữ liệu lại nếu cần.
+                            </td>
+                            <td>
+                                - Quản lí việc định địa chỉ và định tuyến của các gói dữ liệu trong mạng.<br>
+                                - Mỗi thiết bị trên mạng được gán một địa chỉ IP duy nhất, cho phép xác định trong mạng.<br>
+                                - Làm cho việc định tuyến dữ liệu giữa các thiết bị trở nên có thể thực hiện được.
+                            </td>
+                            <td>
+                                - **HTTP**: Truyền tải và trao đổi thông tin giữa máy chủ web và trình duyệt web.<br>
+                                - **HTTPS**: Truyền tải và trao đổi thông tin an toàn giữa máy chủ web và trình duyệt web.<br>
+                                - **FTP**: Truyền tệp giữa các máy tính trên mạng.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                TCP/IP có một số phiên bản và giao thức bổ sung để hỗ trợ các chức năng cụ thể trong mạng: UDP (User Datagram Protocol), ICMP (Internet Control Message Protocol).
+                Ưu nhược điểm của giao thức mạng TCP/IP:
+ <h2>Ưu nhược điểm của giao thức mạng TCP/IP</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Ưu điểm</th>
+                <th>Nhược điểm</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Độ tin cậy: TCP cung cấp độ tin cậy cao nhờ cơ chế kiểm soát lỗi và tái tạo dữ liệu.</td>
+                <td>Khả năng đối phó với độ trễ: Do kiểm soát lỗi và tái tạo dữ liệu, TCP phản ứng chậm hơn trong mạng có độ trễ cao.</td>
+            </tr>
+            <tr>
+                <td>Thứ tự: Duy trì thứ tự của các gói tin, đảm bảo nhận đúng thứ tự như khi gửi.</td>
+                <td>Không hiệu quả cho ứng dụng yêu cầu thời gian thực: Độ tin cậy của TCP có thể làm tăng độ trễ, không phù hợp với ứng dụng thời gian thực.</td>
+            </tr>
+            <tr>
+                <td>Khả năng kiểm soát luồng: Điều chỉnh tốc độ truyền dữ liệu giữa nguồn và đích, giảm nguy cơ quá tải mạng.</td>
+                <td>Không hỗ trợ đa phương tiện: Gặp khó khăn khi truyền dữ liệu tới nhiều người nghe cùng lúc.</td>
+            </tr>
+            <tr>
+                <td>Định vị và địa chỉ: Sử dụng địa chỉ IP để định vị thiết bị, hỗ trợ liên lạc hiệu quả.</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Độ linh hoạt: Hỗ trợ đa nhiệm, dùng được cho nhiều ứng dụng như truyền file, email, duyệt web, v.v.</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Khả năng mở rộng: Dễ dàng thêm thiết bị và mở rộng mạng linh hoạt.</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+                2. Các chức năng mạng của hệ điều hành<br>
+                - Các hệ điều hành trên máy tính hiện nay đều được trang bị các chức năng mạng nhằm hỗ trợ người dùng trao đổi dữ liệu hoặc sử dụng chung các thiết bị được kết nối mạng: chia sẻ được ổ đĩa, thư mục, chia sẻ máy in. <br>
+                - Chức năng Mobile hotspot cung cấp chức năng chia sẻ điểm truy cập mạng di động.<br>
+                *Để chia sẻ Mobile Hotspot trên Windows 10 cần thực hiện theo các bước sau đây.<br>
+                1. Mở Start, nháy chọn Settings, chọn Network & Internet, chọn Mobile Hotspot. Cửa sổ Mobile Hotspot hiện ra.<br>
+                2. Bật Mobile Hotspot<br>
+                3. Chọn Edit<br>
+                4a. Đặt tên cho điểm truy cập<br>
+                4b. Đặt mật khẩu cho điểm truy cập<br>
+                5.  Save<br>
+                * Chia sẻ Mobile Hotspot trên thiết bị thông minh<br>
+                Thực hiện chia sẻ Mobile Hotspot trên thiết bị thông minh như sau:<br>
+                Chọn cài đặt → Mạng và Internet → Điểm phát song và chia sẻ kết nối → Điểm phát sóng wifi → Sử dụng điểm phát sóng wifi → Đặt tên và mật khẩu.<br>
+                3. Kết nối và sử dụng mạng trên thiết bị thông minh<br>
+                Máy tính và các thiết bị thông mình có thể kết nối với nhau thông qua mạng không dây hoặc cáp chuyển đổi phù hợp nhằm chia sẻ dữ liệu.<br>
+                3.1. Kết nối thiết bị thông minh vào mạng máy tính với cáp chuyển đổi USB-C sang LAN<br>
+                - Các thiết bị thông minh có cổng USB-C có thể kết nối vào mạng máy tính thông qua cáp chuyển đổi USB-C sang LAN.<br>
+                - Vào Control Panel/Network and Sharing Center: Bật chức năng Network discovery.<br>
+                - Vào File Explorer: Network để kiểm tra tính kết nối.<br>
+                3.2. Kết nối thiết bị thông minh vào mạng máy tính thông qua wifi<br>
+                Trên các thiết bị thông minh, mở danh sách các mạng wifi, chọn mạng wifi cần kết nối, nhập mật khẩu nếu cần. Sau khi kết nối được thiết bị thông mình vào mạng máy tính, có thể sử dụng các phần mềm quản lí tệp, thư mục để chia sẻ tài nguyên cho các máy tính trong mạng.<br>                
+            </p>
+        </div>
+
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học tốt cùng Odu</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+            background-color: #f3ffec;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 120px;
+            padding: 0 20px;
+            background: #c7d9a0;
+        }
+
+        .navbar {
+            display: flex;
+            background-color: #73bc63;
+            width: 100%;
+        }
+
+        .navbar a {
+            flex: 1;
+            font-size: 18px;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: rgb(86, 160, 46);
+        }
+        .nav-item {
+            color:  rgb(86, 160, 46);
+            font-weight: normal;
+            text-decoration: none;
+        }
+        
+        .nav-item.active {
+            color:  white; 
+            font-weight: bold;
+        }
+        .navbar a.active {
+        background-color: rgb(86, 160, 46);
+        color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .video-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .video-card {
+            flex: 1;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-card iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+        }
+
+        .video-info {
+            padding: 15px;
+        }
+
+        .video-info h3 {
+            color: #4caf50;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .video-info p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            text-align: left;
+            padding: 20px;
+        }
+
+        .footer-column {
+            flex: 1;
+            padding: 10px;
+        }
+
+        .footer-column h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .footer-column p, .footer-column a {
+            color: #ccc;
+            font-size: 14px;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-column a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 10px;
+            border-top: 1px solid #444;
+            font-size: 13px;
+            color: #aaa;
+        }
+        #userInfo {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 18px;
+}
+#hocsinh {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+#phoneDisplay {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.logoutbtn {
+    background-color: #64cd60;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.logoutbtn:hover {
+    background-color: #268a30; 
+}
+a {
+    text-decoration: none; /* Bỏ gạch chân */
+    color: #11ce07; /* Màu chữ cho liên kết */
+    transition: color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+a:hover {
+    color: #108902; /* Màu khi hover */
+}
+    </style>
+    <script type="module" src="./login.js" defer></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header">
+          <a href="#"><img src="./image/Odu.png" alt="Logo" width="300" height="100"></a>
+          <div class="login">
+            <div id="hocsinh" style="text-align: center; margin: 20px 0; font-size: 18px;">
+              <span id="greeting" style="font-weight: bold; color: #04AA6D;">Vui lòng đăng nhập</span>
+            </div>
+            <a href="./Login.html" id="loginLink" style="display: none;">Đăng nhập</a>
+            <button id="logoutButton" class="logoutbtn" style="display: none;">Đăng xuất</button>
+          </div>
+        </div>
+          </div>
+        <div class="navbar">
+            <a href="./Trangchu.html" class="nav-item">Trang chủ</a>
+            <a href="./Lythuyet.html"  class="nav-item">Kiến thức ôn thi THPT</a>
+            <a href="./videobaigiang.html"  class="nav-item">Video bài giảng</a>
+            <a href="./Luyentap.html" class="nav-item">Luyện tập</a>
+            <a href="./danhsach.html"  class="nav-item">Đề thi</a>
+          </div>
+          <script>
+            document.addEventListener("DOMContentLoaded", () => {
+          const navItems = document.querySelectorAll(".nav-item");
+
+          navItems.forEach((item) => {
+            // Kiểm tra URL hiện tại có khớp link của nav item không
+            if (item.href === window.location.href) {
+              item.classList.add("active");
+            }
+          });
+        });
+          </script>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Chủ đề 1 -->
+        <h2 class="section-title">Chủ đề: Lập trình cơ bản</h2>
+        <div class="video-row">
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/JzSKO347DYU?si=mFHJwitI9M5I5D08" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h3>Giới thiệu về lập trình</h3>
+                    <p>Các khái niệm cơ bản về lập trình.</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/I1iyfNwvgrk?si=GbFdv9bjGfMTPTMt" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h3>Các kiểu dữ liệu</h3>
+                    <p>Hiểu về kiểu dữ liệu và biến trong lập trình.</p>
+                    <p style="color: #47664b;">Người đăng: Giáo viên Dương Thị Minh Tâm</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/t5r1pW3l8qQ?si=QnQ65JzXVdGAPhHp" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h3>Biến, phép gán và biểu thức số học</h3>
+                    <p style="color: #47664b;">Người đăng: Giáo viên Dương Thị Minh Tâm</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chủ đề 2 -->
+        <h2 class="section-title">Chủ đề: Cơ sở dữ liệu</h2>
+        <div class="video-row">
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/nF-g7Rrc7mU?si=i_wh7UMGGAuPKbws" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h3>Giới thiệu về SQL</h3>
+                    <p>Các câu lệnh cơ bản trong SQL.</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/9qWct0qM4_s?si=0HjJsoOCInISPA1-" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h3>Liên kết bảng</h3>
+                    <p>Cách tạo liên kết giữa các bảng trong SQL.</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/glDmJJzMX28?si=rljaSHddPkF75X8G" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h3>Truy vấn dữ liệu SQL</h3>
+                    <p>Truy vấn dữ liệu (Query)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chủ đề 3 -->
+        <h2 class="section-title">Chủ đề: Lập trình web</h2>
+        <div class="video-row">
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/tVdaxMMW9q8?si=gjMuS-BFGrAXkKP0" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h3>Giới thiệu về lập trình web</h3>
+                    <p>Tổng quan về lập trình web.</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/B0NgbjglAzs?si=GcHME0WjL2O3PYKT" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h3>Ngôn ngữ lập trình</h3>
+                    <p>Học ngôn ngữ HTML.</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/6UOrzKmuD9w?si=QeMHBqUsF8vKAlIy" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h3>Thiết kế giao diện với CSS</h3>
+                    <p>Học ngôn ngữ CSS.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chủ đề 4 -->
+        <h2 class="section-title">Chủ đề: Mạng máy tính</h2>
+        <div class="video-row">
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/DC5SLPzwiro?si=OwrI8F6RU1xtWiM0" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h3>Kiến thức mạng cơ bản</h3>
+                    <p>Tổng quan về TCP/IP và các giao thức mạng.</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/5LGe1mpezMY?si=4KXt7kk1XD5FgeCF" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h3>Bảo mật mạng</h3>
+                    <p>Các kỹ thuật bảo mật mạng cơ bản.</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/x7FXVURK2tc?si=1Ne1_3p0sFwAaSZ5" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h3>Phân loại mạng máy tính</h3>
+                    <p>Phân loại mạng LAN,MAN,WAN,GAN</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Thông tin chủ sở hữu</h3>
+                <p>Chủ sở hữu: Luu Tienn</p>
+                <p>Điện thoại: 0789 357 421</p>
+                <p>Email: luutien0987@gmail.com</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Theo dõi tôi</h3>
+                <a href="https://www.facebook.com/hennieisme">Facebook</a> |
+                <a href="https://www.instagram.com/tienn_luu">Instagram</a> |
+                <a href="https://x.com/HyeCeline291">Twitter</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Bản quyền thuộc về chủ sở hữu.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

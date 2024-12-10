@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học tốt cùng Odu</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+            background-color: #f3ffec;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 120px;
+            padding: 0 20px;
+            background: #c7d9a0;
+        }
+
+        .login a {
+            font-size: 18px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .login a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar {
+            display: flex;
+            background-color: #73bc63;
+            width: 100%;
+        }
+
+        .navbar a {
+            flex: 1;
+            font-size: 18px;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: rgb(86, 160, 46);
+        }
+
+        main {
+            background: #f3ffec;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content h2 {
+            color: #e74c3c;
+        }
+
+        .modal-content p {
+            margin: 20px 0;
+            font-size: 18px;
+        }
+
+        .modal-content button {
+            background-color: #62d466;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .modal-content button:hover {
+            background-color: #3c9240;
+        }
+
+        #result-text {
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .question-title {
+            font-size: 28px;
+        }
+
+        .question-text {
+            font-size: 24px;
+        }
+
+        label {
+            font-size: 20px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        #fixed-footer { 
+            position: fixed; 
+            bottom: 0; 
+            left: 0; 
+            width: 100%; 
+            background-color: rgba(255, 255, 255, 0.9); 
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); 
+            padding: 20px 0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+        }
+
+        .answer-button {
+            display: block;
+            background-color: #5cc05f;
+            /* Màu nền xanh */
+            color: white;
+            /* Màu chữ trắng */
+            border: none;
+            /* Không có viền */
+            border-radius: 5px;
+            /* Góc tròn */
+            padding: 10px 15px;
+            /* Khoảng đệm */
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 18px;
+            /* Kích thước chữ */
+        }
+
+        .answer-button.selected {
+            background-color: #1e7423;
+            /* Màu xanh đậm hơn khi được chọn */
+        }
+
+        #result-modal {
+            display: none;
+        }
+
+        #hocsinh {
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+        #phoneDisplay {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .logoutbtn {
+            background-color: #64cd60;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .logoutbtn:hover {
+            background-color: #268a30;
+        }
+
+        .login a {
+            font-size: 18px;
+            color: #333;
+            text-decoration: none;
+        }
+        a {
+            text-decoration: none; /* Bỏ gạch chân */
+            color: #11ce07; /* Màu chữ cho liên kết */
+            transition: color 0.3s; /* Hiệu ứng chuyển màu */
+        }
+
+        a:hover {
+            color: #108902; /* Màu khi hover */
+        }
+        #time-remaining {
+        font-size: 24px;
+        color: #333;
+        }
+    </style>
+    <script src="./login.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <a href="#"><img src="./image/Odu.png" alt="Logo" width="300" height="100"></a>
+            <div class="login">
+                <div id="hocsinh" style="text-align: center; margin: 20px 0; font-size: 18px;"></div>
+                <span id="phoneDisplay" style="font-weight: bold; color: #04AA6D;"></span>
+            </div>
+            <a href="./LogIn.html" id="loginLink">Đăng nhập</a>
+            <button id="logoutButton" style="display: none;" class="logoutbtn">Đăng xuất</button>
+        </div>
+    </header>
+    <nav class="navbar">
+            <a href="./Odu.html">Trang chủ</a>
+            <a href="./Lythuyet.html">Kiến thức ôn thi THPT</a>
+            <a href="./Luyentap.html">Luyện tập</a>
+            <a href="./danhsachdethi.html">Tạo đề thi</a>
+    </nav>
+    <main>
+        <h1 id="tendethi"></h1>
+        <div id="test-list-container"></div>
+        <div id="quiz-container" style="display: none;"></div>
+        <div style="height: 150px;"></div>
+        <div id="fixed-footer">
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <h1 id="time-remaining"></h1>
+                <button type="button" onclick="submitQuizHandler()" style="display: none;" id="submitButton">Nộp Bài</button>
+            </div>
+        </div>
+
+        <!-- Modal Kết quả -->
+        <div id="result-modal" class="modal">
+            <div class="modal-content">
+                <h2>Kết Quả Điểm Thi</h2>
+                <p id="result-text"></p>
+                <button id="home-button" onclick="closeModal()">Quay Về Trang Chủ</button>
+            </div>
+        </div>
+    </main>
+    <script type="module">
+   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+        import { getFirestore, collection, getDocs, query, where } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
+
+        // Cấu hình Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDbREPWwiC8EKsnd6yafF3hOHciZoT2X5Y",
+            authDomain: "khkt-e5f55.firebaseapp.com",
+            projectId: "khkt-e5f55",
+            storageBucket: "khkt-e5f55.appspot.com",
+            messagingSenderId: "362456283753",
+            appId: "1:362456283753:web:891b25d6ad8525e6d540f8",
+            measurementId: "G-7LMPVMPP4R",
+        };
+
+        const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+let selectedAnswers = {};  // Lưu trữ các câu trả lời đã chọn
+let correctAnswers = {};   // Lưu trữ đáp án đúng
+let timerInterval;
+
+const timeLimit = 45 * 60; // Giới hạn thời gian làm bài
+
+// Hàm tải danh sách đề thi
+async function loadTests() {
+    const testListContainer = document.getElementById('test-list-container');
+    testListContainer.innerHTML = ''; // Xóa nội dung cũ
+}
+
+// Hàm tải đề thi và câu hỏi
+async function loadQuiz() {
+    const testId = localStorage.getItem("currentTestId"); // Lấy ID đề thi từ localStorage
+
+    const quizContainer = document.getElementById('quiz-container');
+    quizContainer.innerHTML = ''; // Xóa nội dung cũ
+    quizContainer.style.display = 'block';
+
+    document.getElementById("submitButton").style.display = "block";
+
+    startTimer(timeLimit); // Bắt đầu đếm ngược thời gian làm bài
+
+    try {
+        // Truy vấn câu hỏi từ Firebase dựa trên testId
+        const questionsSnapshot = await getDocs(query(collection(db, "dethi"), where("__name__", "==", testId)));
+        if (questionsSnapshot.empty) {
+            return {};
+        }
+        const data = questionsSnapshot.docs[0].data();
+        console.log(data);
+
+        // Lặp qua từng câu hỏi và tạo giao diện
+        data.questions.forEach((questionData, index) => {
+            const questionId = `${testId}_${index}`; // Định danh câu hỏi duy nhất
+
+            // Tạo phần tử cho câu hỏi
+            const questionElement = document.createElement('div');
+            questionElement.classList.add('question-title');
+            questionElement.innerHTML = `<div class="question-text">${questionData.question}</div>`; // Nội dung câu hỏi
+
+            // Tạo lựa chọn câu trả lời
+            if (questionData.type === "multiple") {
+                questionData.answers.forEach((answer, answerIndex) => {
+                    const answerButton = document.createElement('button');
+                    answerButton.classList.add('answer-button');
+                    answerButton.innerText = answer;
+                    answerButton.onclick = () => selectAnswer(testId, questionId, answerIndex, answerButton); 
+                    questionElement.appendChild(answerButton);
+                });
+                // Lưu chỉ số câu trả lời đúng
+                correctAnswers[questionId] = questionData.answers.indexOf(questionData.correctAnswer); // Thiết lập câu trả lời đúng cho loại câu hỏi "multiple"
+            } else if (questionData.type === "truefalse") {
+                const trueFalseOptions = ["Đúng", "Sai"]; 
+
+                trueFalseOptions.forEach((option, answerIndex) => {
+                    const answerButton = document.createElement('button');
+                    answerButton.classList.add('answer-button');
+                    answerButton.innerText = option;
+                    answerButton.dataset.isCorrect = option === questionData.correctAnswer; 
+                    answerButton.onclick = () => selectAnswer(testId, questionId, answerIndex, answerButton);
+                    questionElement.appendChild(answerButton);
+                });
+                // Lưu giá trị true/false cho câu hỏi "true/false"
+                correctAnswers[questionId] = questionData.correctAnswer; 
+            }
+
+            quizContainer.appendChild(questionElement);
+        });
+    } catch (error) {
+        console.error("Error loading quiz: ", error);
+    }
+}
+loadQuiz();
+
+// Hàm bắt đầu đếm ngược thời gian làm bài
+function startTimer(duration) {
+    let timeRemaining = duration;
+    const timeDisplay = document.getElementById('time-remaining');
+
+    timerInterval = setInterval(() => {
+        const minutes = Math.floor(timeRemaining / 60);
+        const seconds = timeRemaining % 60;
+        timeDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        timeRemaining--;
+
+        if (timeRemaining < 0) {
+            clearInterval(timerInterval);
+            submitQuizHandler(); // Tự động nộp bài khi hết thời gian
+        }
+    }, 1000);
+}
+
+// Hàm xử lý khi người dùng chọn đáp án
+function selectAnswer(testId, questionId, selectedIndex, selectedButton) {
+    // Lưu đáp án đã chọn vào selectedAnswers
+    if (!selectedAnswers[testId]) {
+        selectedAnswers[testId] = {};
+    }
+    selectedAnswers[testId][questionId] = selectedIndex; // Lưu chỉ số đáp án đã chọn
+
+    // Thay đổi màu sắc nút đã chọn
+    const questionElement = selectedButton.closest('.question-title');
+    const buttons = questionElement.querySelectorAll('.answer-button');
+    buttons.forEach(button => button.classList.remove('selected'));
+    selectedButton.classList.add('selected'); // Chỉ giữ màu cho nút đã chọn
+}
+
+function submitQuizHandler() {
+    clearInterval(timerInterval);
+    document.getElementById("submitButton").style.display = "none";
+    let score = 0;
+    let totalQuestions = 0;
+
+    // Kiểm tra nếu có câu hỏi nào được chọn
+    if (Object.keys(selectedAnswers).length === 0 || Object.keys(selectedAnswers[localStorage.getItem("currentTestId")] || {}).length === 0) {
+        alert("Vui lòng chọn ít nhất một câu hỏi trước khi nộp bài!");
+        document.getElementById("submitButton").style.display = "block"; // Hiện lại nút nộp bài
+        return; // Dừng hàm nộp bài
+    }
+
+    console.log("Selected Answers:", selectedAnswers);
+    console.log("Correct Answers:", correctAnswers); 
+
+    for (const testId in selectedAnswers) {
+        for (const questionId in selectedAnswers[testId]) {
+            const selectedIndex = selectedAnswers[testId][questionId];
+            totalQuestions++;
+
+            const correctAnswer = correctAnswers[questionId]; // Lấy đáp án đúng cho mỗi questionId
+
+            // So sánh câu trả lời đã chọn với câu trả lời đúng
+            if (correctAnswer !== undefined) { // Kiểm tra nếu có đáp án đúng
+                if (Array.isArray(correctAnswer)) {
+                    if (selectedIndex === correctAnswer) {
+                        score++;
+                    }
+                } else {
+                    if (selectedIndex === (correctAnswer ? 0 : 1)) {
+                        score++;
+                    }
+                }
+            }
+        }
+    }
+    const resultText = `Điểm của bạn là: ${score}/${totalQuestions}`;
+    document.getElementById('result-text').innerText = resultText;
+    document.getElementById('result-modal').style.display = 'flex'; // Hiện modal kết quả
+}
+
+window.submitQuizHandler = submitQuizHandler;
+
+// Hàm đóng modal kết quả
+function closeModal() {
+    document.getElementById('result-modal').style.display = 'none'; // Đóng modal
+    location.href = './danhsachhocsinh.html'; // Chuyển hướng về danh sách đề thi
+}
+
+window.closeModal = closeModal;
+
+loadTests();
+    </script>
+</body>
+
+</html>

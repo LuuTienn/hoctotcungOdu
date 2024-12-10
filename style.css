@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3ffec;
+}
+
+header {
+    text-align: center;
+    background-color: #73bc63;
+    color: white;
+}
+
+main {
+    padding: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+a {
+    text-decoration: none; /* Bỏ gạch chân */
+    color: #11ce07; /* Màu chữ cho liên kết */
+    transition: color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+a:hover {
+    color: #108902; /* Màu khi hover */
+}

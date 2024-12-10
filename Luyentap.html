@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học tốt cùng Odu</title>
+    <style>
+            * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+            background-color: #e3f5d7;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 120px;
+            padding: 0 20px; 
+            background: #c7d9a0;
+        }
+        header img {
+            width: 300px; /* Chiều rộng cố định 300px */
+            height: 100px; /* Chiều cao cố định 100px */
+            max-width: 100%; /* Đảm bảo hình ảnh không vượt quá 100% chiều rộng của phần tử chứa */
+        }
+        /* Menu */
+        .navbar {
+            display: flex; 
+            background-color: #73bc63;
+            width: 100%; 
+        }
+
+        .navbar a {
+            flex: 1; 
+            font-size: 18px;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: rgb(86, 160, 46); 
+        }
+        .nav-item {
+            color:  rgb(86, 160, 46);
+            font-weight: normal;
+            text-decoration: none;
+        }
+        
+        .nav-item.active {
+            color:  white; 
+            font-weight: bold;
+        }
+        .navbar a.active {
+        background-color: rgb(86, 160, 46);
+        color: white;
+        }
+        #userInfo {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 18px;
+}
+#hocsinh {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+#phoneDisplay {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.logoutbtn {
+    background-color: #64cd60;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.logoutbtn:hover {
+    background-color: #268a30; 
+}
+a {
+    text-decoration: none; /* Bỏ gạch chân */
+    color: #11ce07; /* Màu chữ cho liên kết */
+    transition: color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+a:hover {
+    color: #108902; /* Màu khi hover */
+}
+.login {
+    margin-left: 20px; /* Khoảng cách bên trái cho phần đăng nhập */
+}
+
+.login a {
+    font-size: 18px; /* Kích thước font cho link */
+    color: #333; /* Màu chữ */
+    text-decoration: none; /* Bỏ gạch chân */
+}
+
+.login a:hover {
+    text-decoration: underline; /* Gạch chân khi hover */
+}
+
+        .resources-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 20px;
+            transition: transform 0.3s ease;
+            border-left: 4px solid #388e3c;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            background-color: #388e3c;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 22px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .section li {
+            margin: 12px 0;
+        }
+
+        .section a {
+            color: #388e3c;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .section a:hover {
+            color: #2c6e2f;
+        }
+    </style>
+        <script type="module" src="./login.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header">
+          <a href="#"><img src="./image/Odu.png" alt="Logo" width="300" height="100"></a>
+          <div class="login">
+            <div id="hocsinh" style="text-align: center; margin: 20px 0; font-size: 18px;">
+              <span id="greeting" style="font-weight: bold; color: #04AA6D;">Vui lòng đăng nhập</span>
+            </div>
+            <a href="./Login.html" id="loginLink" style="display: none;">Đăng nhập</a>
+            <button id="logoutButton" class="logoutbtn" style="display: none;">Đăng xuất</button>
+          </div>
+        </div>
+          </div>
+        <div class="navbar">
+            <a href="./Trangchu.html" class="nav-item">Trang chủ</a>
+            <a href="./Lythuyet.html"  class="nav-item">Kiến thức ôn thi THPT</a>
+            <a href="./videobaigiang.html"  class="nav-item">Video bài giảng</a>
+            <a href="./Luyentap.html" class="nav-item">Luyện tập</a>
+            <a href="./danhsach.html"  class="nav-item">Đề thi</a>
+          </div>
+          <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const navItems = document.querySelectorAll(".nav-item");
+        
+                navItems.forEach((item) => {
+                    // Kiểm tra URL hiện tại có khớp với link của nav item không
+                    if (window.location.pathname.includes(new URL(item.href).pathname)) {
+                        item.classList.add("active");
+                    }
+                });
+            });
+        </script>
+    </header>
+    <div class="resources-container">
+        <!-- ĐỀ THI THỬ -->
+        <div class="section">
+            <h2>Đề thi thử</h2>
+            <ul>
+                <li><a href="https://azota.vn/de-thi/ikyxow" target="_blank">Đề thi thử 01</a></li>
+                <li><a href="https://azota.vn/de-thi/zi0wob" target="_blank">Đề thi thử 02</a></li>               
+                <li><a href="https://azota.vn/de-thi/zi0wob" target="_blank">Đề thi thử 03</a></li>
+                <li><a href="https://azota.vn/de-thi/zi0wob" target="_blank">Đề thi thử 04</a></li>
+                <li><a href="https://azota.vn/de-thi/zi0wob" target="_blank">Đề thi thử 05</a></li>
+                <li><a href="https://azota.vn/de-thi/zi0wob" target="_blank">Đề thi thử 06</a></li>
+
+
+            </ul>
+        </div>
+
+                <!-- KIỂM TRA CUỐI KÌ -->
+                <div class="section">
+                    <h2>Đề kiểm tra cuối kì</h2>
+                    <ul>
+                        <li><a href="https://azota.vn/de-thi/finalexam1">Đề thi kiểm tra cuối kì 1 - Đề số 01</a></li>
+                        <li><a href="https://azota.vn/de-thi/finalexam2">Đề thi kiểm tra cuối kì 1 - Đề số 02</a></li>
+                        <li><a href="https://azota.vn/de-thi/finalexam2">Đề thi kiểm tra cuối kì 2 - Đề số 01</a></li>
+                        <li><a href="https://azota.vn/de-thi/finalexam2">Đề thi kiểm tra cuối kì 2 - Đề số 02</a></li>
+                    </ul>
+                </div>
+            
+                <!--KIỂM TRA GIỮA KÌ-->
+                <div class="section">
+                    <h2>Đề kiểm tra giữa kì</h2>
+                    <ul>
+                        <li><a href="https://azota.vn/de-thi/finalexam1">Đề thi kiểm tra giữa kì 1 - Đề số 01</a></li>
+                        <li><a href="https://azota.vn/de-thi/finalexam2">Đề thi kiểm tra giữa kì 1 - Đề số 02</a></li>
+                        <li><a href="https://azota.vn/de-thi/finalexam2">Đề thi kiểm tra giữa kì 2 - Đề số 01</a></li>
+                        <li><a href="https://azota.vn/de-thi/finalexam2">Đề thi kiểm tra giữa kì 2 - Đề số 02</a></li>
+                    </ul>
+                </div>
+
+        <!-- ÔN LUYỆN THEO CHƯƠNG -->
+        <div class="section">
+            <h2>Ôn luyện theo chương</h2>
+            <ul>
+                <li><a href="https://azota.vn/de-thi/jrp2nx">Chủ đề A Lớp 12 Máy tính và xã hội tri thức</a></li>
+                <li><a href="https://azota.vn/de-thi/jrp2nx">Chủ đề B Lớp 12 Mạng máy tính và internet</a></li>
+                <li><a href="https://azota.vn/de-thi/jrp2nx">Chủ đề D Lớp 12 Đạo đức, pháp luật và văn hóa trong môi trường số</a></li>
+                <li><a href="https://azota.vn/de-thi/cy3czj">Chủ đề F Lớp 12 Giải quyết vấn đề với sự trợ giúp của máy tính</a></li>
+                <li><a href="https://azota.vn/de-thi/maiob3">Chủ đề F Lớp 11 Cơ sở dữ liệu</a></li>
+            </ul>
+        </div>
+
+               <!-- QUIZ GAME -->
+               <div class="section">
+                <h2>Quiz Game</h2>
+                <ul>
+                    <li><a href="https://quizizz.com/admin/quiz/5e5694bc94d6ee001d983c12?source=quiz_share" target="_blank">Chơi Quiz Game: Khám phá kiến thức Tin học</a></li>
+                </ul>
+            </div>
+    
+            <!-- ĐỀ MINH HỌA -->
+            <div class="section">
+                <h2>Đề minh họa</h2>
+                <ul>
+                    <li><a href="https://cdn.thuvienphapluat.vn/uploads/tintuc/2024/10/19/de-minh-hoa-mon-tin-hoc-thpt-2025.pdf" target="_blank">File PDF Đề minh họa kỳ thi THPT Quốc gia 2024</a></li>
+                    <li><a href="https://cdn.thuvienphapluat.vn/uploads/tintuc/2024/10/28/dap-an-de-minh-hoa-mon-tin-hoc-thpt-2025.pdf" target="_blank">File Đáp án Đề minh họa kỳ thi THPT Quốc gia 2024</a></li>
+                </ul>
+            </div>
+    </div>
+</body>
+</html>

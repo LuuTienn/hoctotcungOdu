@@ -1,0 +1,411 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif; /* Phông chữ mặc định */
+}
+
+body {
+    font-family: Verdana, sans-serif; /* Phông chữ cho body */
+    background-image: linear-gradient(rgb(212, 244, 192), rgb(231, 249, 222)); /* Hình nền gradient */
+}
+
+.header {
+    display: flex; /* Sử dụng flexbox */
+    justify-content: space-between; /* Căn giữa các phần tử */
+    align-items: center; /* Căn chỉnh theo chiều dọc */
+    height: 120px; /* Chiều cao header */
+    padding: 0 20px; /* Padding bên trái và bên phải */
+    background: #c7d9a0; /* Màu nền header */
+}
+
+.login {
+    margin-left: 20px; /* Khoảng cách bên trái cho phần đăng nhập */
+}
+
+.login a {
+    font-size: 18px; /* Kích thước font cho link */
+    color: #333; /* Màu chữ */
+    text-decoration: none; /* Bỏ gạch chân */
+}
+
+.login a:hover {
+    text-decoration: underline; /* Gạch chân khi hover */
+}
+
+.container {
+    max-width: 1555px; /* Chiều rộng tối đa */
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    margin: 0 auto; /* Căn giữa khung chứa */
+}
+
+header img { /* Sửa lại selector cho hình ảnh trong header */
+    padding-left: 0; /* Padding bên trái cho hình ảnh */
+}
+
+.text-center {
+    text-align: center; /* Căn giữa văn bản */
+    margin: 20px auto; /* Khoảng cách bên ngoài */
+    max-width: 800px; /* Giới hạn chiều rộng */
+}
+
+.tip {
+    display: flex; /* Sử dụng flexbox để căn chỉnh */
+    align-items: flex-start; /* Căn chỉnh phần tử theo chiều dọc */
+    margin: 10px 0; /* Khoảng cách giữa các tip */
+    justify-content: center; /* Căn giữa nội dung */
+}
+
+.float-left {
+    margin-right: 15px; /* Khoảng cách giữa ảnh và văn bản bên phải */
+}
+
+.float-right {
+    margin-left: 15px; /* Khoảng cách giữa ảnh và văn bản bên trái */
+}
+
+.tip-content {
+    max-width: 70%; /* Giới hạn chiều rộng của nội dung văn bản */
+    text-align: left; /* Đặt văn bản căn trái */
+}
+
+.mySlides {
+    display: none; /* Ẩn các slide */
+}
+
+
+
+/* Khung chứa slideshow */
+.slideshow-container {
+    max-width: 1000px; /* Chiều rộng tối đa */
+    position: relative; /* Vị trí tương đối */
+    margin: auto; /* Căn giữa khung chứa */
+}
+
+/* Văn bản chú thích */
+.text {
+    color: #f2f2f2; /* Màu chữ chú thích */
+    font-size: 15px; /* Kích thước font */
+    padding: 8px 12px; /* Padding cho văn bản chú thích */
+    position: absolute; /* Vị trí tuyệt đối */
+    bottom: 8px; /* Căn dưới khung chứa */
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    text-align: center; /* Căn giữa văn bản */
+}
+
+/* Văn bản số (1/3, v.v.) */
+.numbertext {
+    color: #f2f2f2; /* Màu chữ cho số */
+    font-size: 12px; /* Kích thước font cho số */
+    padding: 8px 12px; /* Padding cho số */
+    position: absolute; /* Vị trí tuyệt đối */
+    top: 0; /* Căn trên khung chứa */
+}
+
+/* Các dấu chấm/bullets/indicators */
+.dot {
+    height: 15px; /* Chiều cao dấu chấm */
+    width: 15px; /* Chiều rộng dấu chấm */
+    margin: 0 2px; /* Khoảng cách giữa các dấu chấm */
+    background-color: #fffefe; /* Màu nền dấu chấm */
+    border-radius: 50%; /* Đường viền tròn */
+    display: inline-block; /* Hiển thị inline */
+    transition: background-color 0.1s ease; /* Hiệu ứng chuyển màu */
+}
+
+.active {
+    background-color:  rgb(86, 160, 46); 
+}
+
+/* Hiệu ứng mờ */
+.fade {
+    animation-name: fade; /* Tên hoạt ảnh */
+    animation-duration: 2.5s; /* Thời gian hoạt ảnh */
+}
+
+@keyframes fade {
+    from { opacity: 0.4; } /* Bắt đầu mờ */
+    to { opacity: 1; } /* Kết thúc không mờ */
+}
+
+/* Trên màn hình nhỏ, giảm kích thước văn bản */
+@media only screen and (max-width: 300px) {
+    .text {
+        font-size: 11px; /* Kích thước font cho màn hình nhỏ */
+    }
+}
+
+/* Menu */
+.navbar {
+    display: flex; /* Sử dụng flexbox cho menu */
+    background-color: #73bc63; /* Màu nền menu */
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+}
+
+.navbar a {
+    flex: 1; /* Mỗi mục menu sẽ chiếm đều không gian */
+    font-size: 18px; /* Kích thước font cho mục menu */
+    color: white; /* Màu chữ cho mục menu */
+    text-align: center; /* Căn giữa cho mục menu */
+    padding: 14px; /* Padding cho các mục menu */
+    text-decoration: none; /* Bỏ gạch chân cho link */
+}
+.navbar a:hover{
+    background-color: rgb(86, 160, 46); /* Hiệu ứng hover */
+}
+.nav-item {
+    color:  rgb(86, 160, 46);
+    font-weight: normal;
+    text-decoration: none;
+  }
+  
+  .nav-item.active {
+    color:  white; 
+    font-weight: bold;
+  }
+
+/* The grid: Four equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 25%;
+    padding: 10px;
+  }
+  
+  /* Style the images inside the grid */
+  .column img {
+    opacity: 0.8; 
+    cursor: pointer; 
+  }
+  
+  .column img:hover {
+    opacity: 1;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* The expanding image container */
+  .container-2 {
+    position: relative;
+    display: none;
+    justify-content: center;
+    align-items: center;    
+  }
+/* Expanding image text */
+#imgtext {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    font-size: 20px;
+  }
+  
+  /* Closable button inside the expanded image */
+  .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+}
+/* Footer styling */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+    padding: 20px;
+}
+
+.footer-column {
+    flex: 1;
+    padding: 10px;
+}
+
+.footer-column h3 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.footer-column p, .footer-column a {
+    color: #ccc;
+    font-size: 14px;
+    text-decoration: none;
+    line-height: 1.8;
+}
+
+.footer-column a:hover {
+    color: #fff;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 10px;
+    border-top: 1px solid #444;
+    font-size: 13px;
+    color: #aaa;
+}
+#userInfo {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 18px;
+}
+#hocsinh {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+#phoneDisplay {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.logoutbtn {
+    background-color: #64cd60;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.logoutbtn:hover {
+    background-color: #268a30; 
+}
+a {
+    text-decoration: none; /* Bỏ gạch chân */
+    color: #11ce07; /* Màu chữ cho liên kết */
+    transition: color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+a:hover {
+    color: #108902; /* Màu khi hover */
+}
+
+
+#chatbox {
+    width: 300px; /* Chiều rộng nhỏ hơn */
+    height: 400px; /* Chiều cao nhỏ hơn */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-family: Arial, sans-serif;
+    z-index: 1000;
+}
+
+/* Header of chatbox */
+#chat-header {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px; /* Giảm padding */
+    font-size: 16px; /* Kích thước chữ nhỏ hơn */
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Messages container */
+#messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px; /* Giảm padding */
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Giảm khoảng cách giữa các tin nhắn */
+}
+
+/* Individual messages */
+.message {
+    max-width: 80%;
+    padding: 8px; /* Giảm padding */
+    border-radius: 10px; /* Giảm bo góc */
+    font-size: 12px; /* Kích thước chữ nhỏ hơn */
+    line-height: 1.4;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.message.sent {
+    align-self: flex-end;
+    background-color: #4caf50;
+    color: white;
+}
+
+.message.received {
+    align-self: flex-start;
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+/* Input area */
+#input-area {
+    display: flex;
+    padding: 8px; /* Giảm padding */
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+}
+
+#chat-input {
+    flex: 1;
+    padding: 8px; /* Giảm padding */
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    outline: none;
+    font-size: 12px; /* Kích thước chữ nhỏ hơn */
+    transition: border-color 0.3s;
+}
+
+#chat-input:focus {
+    border-color: #4caf50;
+}
+
+#send-button {
+    margin-left: 5px;
+    padding: 8px 15px; /* Giảm kích thước nút */
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 12px; /* Kích thước chữ nhỏ hơn */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#send-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+iframe {
+    width: 1000px; /* Chiều rộng nhỏ gọn */
+    height: 700px; /* Chiều cao nhỏ gọn */
+    border: 1px solid #ccc; /* Đường viền mỏng */
+    border-radius: 8px; /* Bo góc mềm mại */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+}
+#calendar {
+    background-color: white; /* Đặt nền trắng */
+    border: 1px solid #ccc;  /* Viền xám nhạt */
+    padding: 10px;           /* Khoảng cách bên trong */
+    border-radius: 8px;      /* Bo góc */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+    max-width: 900px;
+    margin: 50px auto;
+}
