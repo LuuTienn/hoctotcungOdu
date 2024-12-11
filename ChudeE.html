@@ -399,6 +399,52 @@ a:hover {
         }
     }
 </script>
+<script type="module">
+    import { db } from './firebase.js';
+    import { collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
+    
+    document.addEventListener('DOMContentLoaded', async () => {
+        const greetingElement = document.getElementById('greeting');
+        const logoutButton = document.getElementById('logoutButton');
+        const loginLink = document.getElementById('loginLink');
+    
+        // Lấy thông tin người dùng từ Firestore
+        const phone = sessionStorage.getItem('userPhone'); // Lưu số điện thoại sau khi đăng nhập
+        if (phone) {
+            try {
+                const usersRef = collection(db, "users");
+                const q = query(usersRef, where("phone", "==", phone));
+                const querySnapshot = await getDocs(q);
+    
+                if (!querySnapshot.empty) {
+                    const userData = querySnapshot.docs[0].data();
+                    const username = userData.username;
+                    const role = userData.role;
+    
+                    greetingElement.innerText = `Chào mừng ${role === 'giaovien' ? 'cô' : 'bạn'}: ${username}`;
+                    logoutButton.style.display = 'inline-block';
+                    loginLink.style.display = 'none';
+                }
+            } catch (error) {
+                console.error("Lỗi khi lấy thông tin người dùng từ Firestore:", error);
+            }
+        } else {
+            greetingElement.innerText = 'Vui lòng đăng nhập';
+            logoutButton.style.display = 'none';
+            loginLink.style.display = 'inline-block';
+        }
+    
+        // Đăng xuất
+        logoutButton.addEventListener('click', () => {
+            // Xóa thông tin người dùng
+            sessionStorage.removeItem('userPhone');
+            greetingElement.innerText = 'Vui lòng đăng nhập';
+            logoutButton.style.display = 'none';
+            loginLink.style.display = 'inline-block';
+            alert("Đăng xuất thành công!");
+        });
+    });
+    </script>
 
 </body>
 </html>

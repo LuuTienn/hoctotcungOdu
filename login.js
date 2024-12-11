@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const { username, role } = userData;
 
                 // Hiển thị lời chào
-                greetingElement.innerText = `Chào mừng ${role === 'teacher' ? 'cô' : 'bạn'}: ${username}`;
+                greetingElement.innerText = `Chào mừng ${role === 'giaovien' ? 'cô' : 'bạn'}: ${username}`;
                 logoutButton.style.display = 'none'; // Hiển thị nút đăng xuất
             } else {
                 greetingElement.innerText = 'Chào mừng thầy/cô đến với trang web học tốt cùng Odu!';
